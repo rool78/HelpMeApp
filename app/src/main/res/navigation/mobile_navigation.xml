@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.rms.helpmeapp.ui.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_nav_home_to_helpFilterFragment"
+            app:destination="@id/helpFilterFragment" />
+        <action
+            android:id="@+id/action_nav_home_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/helpFilterFragment"
+        android:name="com.rms.helpmeapp.ui.helpFilter.HelpFilterFragment"
+        android:label="@string/help_filter"
+        tools:layout="@layout/fragment_help_filter" >
+        <action
+            android:id="@+id/action_helpFilterFragment_to_offersFragment"
+            app:destination="@id/offersFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/offersFragment"
+        android:name="com.rms.helpmeapp.ui.offers.view.OffersFragment"
+        android:label="Help offers"
+        tools:layout="@layout/fragment_offers" />
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.rms.helpmeapp.ui.userAuthentication.view.LoginFragment"
+        android:label="Login"
+        tools:layout="@layout/fragment_login">
+    <action
+        android:id="@+id/action_loginFragment_to_formFragment"
+        app:destination="@id/formFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/formFragment"
+        android:name="com.rms.helpmeapp.ui.form.FormFragment"
+        android:label="Form"
+        tools:layout="@layout/fragment_form" />
+</navigation>

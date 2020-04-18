@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.form.FormFragment"
+    android:padding="@dimen/margin_padding_size_medium">
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tfTitle"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+
+        app:counterEnabled="true"
+        app:counterMaxLength="30"
+        android:hint="Title"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+    <!-- TODO hint arriba y a la izquierda -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tfDescription"
+        android:layout_width="match_parent"
+        android:layout_height="144dp"
+        android:layout_marginTop="@dimen/margin_padding_size_large"
+        app:counterEnabled="true"
+        app:counterMaxLength="300"
+        app:layout_constraintTop_toBottomOf="@id/tfTitle"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="Description"
+            android:gravity="left"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tfCountry"
+        android:layout_width="150dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="@dimen/margin_padding_size_large"
+        app:counterEnabled="true"
+        app:counterMaxLength="30"
+        android:hint="Country"
+        app:layout_constraintTop_toBottomOf="@id/tfDescription"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tfProvince"
+        android:layout_width="150dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="@dimen/margin_padding_size_large"
+        app:counterEnabled="true"
+        app:counterMaxLength="30"
+        android:hint="Province"
+        app:layout_constraintTop_toBottomOf="@id/tfDescription"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tfCity"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:layout_marginTop="@dimen/margin_padding_size_large"
+        app:counterEnabled="true"
+        app:counterMaxLength="30"
+        android:hint="City"
+        app:layout_constraintTop_toBottomOf="@id/tfCountry"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tfAddress"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:layout_marginTop="@dimen/margin_padding_size_large"
+        app:counterEnabled="true"
+        app:counterMaxLength="30"
+        android:hint="Adress line"
+        app:layout_constraintTop_toBottomOf="@id/tfCity"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btSave"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:text="save"
+        android:backgroundTint="@color/colorPrimaryDark"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

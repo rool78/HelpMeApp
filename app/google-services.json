@@ -1,0 +1,85 @@
+{
+  "project_info": {
+    "project_number": "1024252679217",
+    "firebase_url": "https://helpapp-475af.firebaseio.com",
+    "project_id": "helpapp-475af",
+    "storage_bucket": "helpapp-475af.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1024252679217:android:b3589a5156598028c7f110",
+        "android_client_info": {
+          "package_name": "com.rms.helpapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1024252679217-q2isom8gb9hadm8psb0ksu8r25tvi21s.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.rms.helpapp",
+            "certificate_hash": "c6f6a038feeea34c4b40f6300e56cd4976074468"
+          }
+        },
+        {
+          "client_id": "1024252679217-mp1rlj43mb5341i05loic1v3gvdqq84l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDvxll6IBp67eMaEbzsUf6MBaai4z2SR94"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1024252679217-mp1rlj43mb5341i05loic1v3gvdqq84l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1024252679217:android:8b2fda9f4eabe95fc7f110",
+        "android_client_info": {
+          "package_name": "com.rms.helpmeapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1024252679217-loonq8950d5rqlht1egp877js59kki14.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.rms.helpmeapp",
+            "certificate_hash": "c6f6a038feeea34c4b40f6300e56cd4976074468"
+          }
+        },
+        {
+          "client_id": "1024252679217-mp1rlj43mb5341i05loic1v3gvdqq84l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDvxll6IBp67eMaEbzsUf6MBaai4z2SR94"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1024252679217-mp1rlj43mb5341i05loic1v3gvdqq84l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

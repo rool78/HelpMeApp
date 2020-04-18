@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="240dp" >
+
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            app:srcCompat="@drawable/logo_help_me_app"
+            android:layout_gravity="center"/>
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/background_nomal_gradient">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <Button
+                android:layout_width="250dp"
+                android:layout_height="60dp"
+                android:id="@+id/btNeedHelp"
+                android:paddingRight="10dp"
+                android:paddingLeft="10dp"
+                android:drawableLeft="@drawable/needhelp"
+                android:textColor="#405453"
+                android:drawablePadding="7dp"
+                app:backgroundTint="#ffffff"
+                android:text="I need help"/>
+
+            <Button
+                android:layout_marginTop="10dp"
+                android:layout_width="250dp"
+                android:layout_height="60dp"
+                android:id="@+id/btWantToHelp"
+                android:paddingRight="10dp"
+                android:paddingLeft="10dp"
+                android:drawableLeft="@drawable/wanttohelp"
+                app:backgroundTint="#ffffff"
+                android:drawablePadding="7dp"
+                android:textColor="#405453"
+                android:text="I want to help"/>
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+</LinearLayout>
