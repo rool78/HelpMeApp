@@ -1,25 +1,26 @@
 package com.rms.helpmeapp.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class User {
 
     private String id;
     private String authId;
     private String name;
-    private String location;
     private String photoUrl;
-    private Offer offer;
 
-    public User(String authId, String name, String location, String photoUrl) {
+    private Set<Offer> offer = new HashSet<>();
+
+    public User(String authId, String name, String photoUrl) {
         this.authId = authId;
         this.name = name;
-        this.location = location;
         this.photoUrl = photoUrl;
     }
 
-    public User(String authId, String name, String location, String photoUrl, Offer offer) {
+    public User(String authId, String name, String photoUrl, Set<Offer> offer) {
         this.authId = authId;
         this.name = name;
-        this.location = location;
         this.photoUrl = photoUrl;
         this.offer = offer;
     }
@@ -47,12 +48,8 @@ public class User {
         return authId;
     }
 
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
+    public void setAuthId(String authId){
+        this.authId = authId;
     }
 
     public String getPhotoUrl() {
@@ -63,21 +60,37 @@ public class User {
         this.photoUrl = photoUrl;
     }
 
-    public Offer getOffer() {
+    public Set<Offer> getOffer() {
         return offer;
     }
 
-    public void setOffer(Offer offer) {
+    public void setOffer(Set<Offer> offer) {
         this.offer = offer;
     }
 
     @Override
     public String toString() {
         return "User{" +
-                    "id='" + id + '\'' +
-                    ", name='" + name + '\'' +
-                    ", photoUrl='" + photoUrl + '\'' +
-                    ", offer=" + offer +
-                    '}';
+                "id='" + id + '\'' +
+                ", authId='" + authId + '\'' +
+                ", name='" + name + '\'' +
+                ", photoUrl='" + photoUrl + '\'' +
+                ", offer=" + offer +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        User user = (User) o;
+
+        return id != null ? id.equals(user.id) : user.id == null;
+    }
+
+    @Override
+    public int hashCode() {
+        return id != null ? id.hashCode() : 0;
     }
 }

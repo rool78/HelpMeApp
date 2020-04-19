@@ -9,7 +9,7 @@
 
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tfTitle"
+        android:id="@+id/tilTitle"
         android:layout_width="match_parent"
         android:layout_height="64dp"
 
@@ -26,13 +26,13 @@
     </com.google.android.material.textfield.TextInputLayout>
     <!-- TODO hint arriba y a la izquierda -->
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tfDescription"
+        android:id="@+id/tilDescription"
         android:layout_width="match_parent"
         android:layout_height="144dp"
         android:layout_marginTop="@dimen/margin_padding_size_large"
         app:counterEnabled="true"
         app:counterMaxLength="300"
-        app:layout_constraintTop_toBottomOf="@id/tfTitle"
+        app:layout_constraintTop_toBottomOf="@id/tilTitle"
         app:layout_constraintStart_toStartOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -44,14 +44,14 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tfCountry"
+        android:id="@+id/tilCountry"
         android:layout_width="150dp"
         android:layout_height="64dp"
         android:layout_marginTop="@dimen/margin_padding_size_large"
         app:counterEnabled="true"
         app:counterMaxLength="30"
         android:hint="Country"
-        app:layout_constraintTop_toBottomOf="@id/tfDescription"
+        app:layout_constraintTop_toBottomOf="@id/tilDescription"
         app:layout_constraintStart_toStartOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -61,14 +61,14 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tfProvince"
+        android:id="@+id/tilProvince"
         android:layout_width="150dp"
         android:layout_height="64dp"
         android:layout_marginTop="@dimen/margin_padding_size_large"
         app:counterEnabled="true"
         app:counterMaxLength="30"
         android:hint="Province"
-        app:layout_constraintTop_toBottomOf="@id/tfDescription"
+        app:layout_constraintTop_toBottomOf="@id/tilDescription"
         app:layout_constraintEnd_toEndOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -78,14 +78,14 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tfCity"
+        android:id="@+id/tilCity"
         android:layout_width="match_parent"
         android:layout_height="64dp"
         android:layout_marginTop="@dimen/margin_padding_size_large"
         app:counterEnabled="true"
         app:counterMaxLength="30"
         android:hint="City"
-        app:layout_constraintTop_toBottomOf="@id/tfCountry"
+        app:layout_constraintTop_toBottomOf="@id/tilCountry"
         app:layout_constraintStart_toStartOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -95,14 +95,14 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tfAddress"
+        android:id="@+id/tilAddress"
         android:layout_width="match_parent"
         android:layout_height="64dp"
         android:layout_marginTop="@dimen/margin_padding_size_large"
         app:counterEnabled="true"
         app:counterMaxLength="30"
         android:hint="Adress line"
-        app:layout_constraintTop_toBottomOf="@id/tfCity"
+        app:layout_constraintTop_toBottomOf="@id/tilCity"
         app:layout_constraintStart_toStartOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText

@@ -1,8 +1,13 @@
-package com.rms.helpmeapp.ui.userAuthentication.view;
+package com.rms.helpmeapp.ui.userAuthentication;
 
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -10,30 +15,25 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Toast;
-
 import com.firebase.ui.auth.AuthUI;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.rms.helpmeapp.R;
+import com.rms.helpmeapp.ui.userAuthentication.controllers.ControllerAuthentication;
+import com.rms.helpmeapp.util.UserSingleton;
 
 import java.util.Arrays;
 import java.util.List;
 
-/**
- * A simple {@link Fragment} subclass.
- */
-public class LoginFragment extends Fragment implements LoginView {
+public class AuthenticationFragment extends Fragment {
 
     private static final int RC_SIGN_IN = 123;
     private FirebaseAuth mFirebaseAuth;
     private FirebaseAuth.AuthStateListener mAuthStateListener;
+    private ControllerAuthentication controller;
 
-    public LoginFragment() {
-        // Required empty public constructor
+    public AuthenticationFragment() {
+
     }
 
     @Override
@@ -44,17 +44,19 @@ public class LoginFragment extends Fragment implements LoginView {
     }
 
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull final View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        final NavController navController = Navigation.findNavController(view);
+        //Dependency Injection?
+        controller = new ControllerAuthentication(view);
+
         mFirebaseAuth = FirebaseAuth.getInstance();
         mAuthStateListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
                 if (firebaseUser != null) {
-                    navController.navigate(R.id.action_loginFragment_to_formFragment);
+                    controller.authenticationSucced(firebaseUser);
                 } else {
                     List<AuthUI.IdpConfig> providers = Arrays.asList(
                                 new AuthUI.IdpConfig.EmailBuilder().build(),
@@ -84,6 +86,7 @@ public class LoginFragment extends Fragment implements LoginView {
         if (requestCode == RC_SIGN_IN) {
             if (resultCode == -1) {
                 // Successfully signed in
+                //TODO habria que mirar te contruir el objeto userSingleton bien en este punto para ya tenerlo listo
                 Toast.makeText(getContext(), "Bienvenido", Toast.LENGTH_SHORT).show();
                 // ...
             } else {
