@@ -1,28 +1,19 @@
 package com.rms.helpmeapp.model;
 
+import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
 public class User {
 
     private String id;
-    private String authId;
     private String name;
     private String photoUrl;
+    private List<Offer> offers = new ArrayList<>();
 
-    private Set<Offer> offer = new HashSet<>();
-
-    public User(String authId, String name, String photoUrl) {
-        this.authId = authId;
+    public User(String name, String photoUrl) {
         this.name = name;
         this.photoUrl = photoUrl;
-    }
-
-    public User(String authId, String name, String photoUrl, Set<Offer> offer) {
-        this.authId = authId;
-        this.name = name;
-        this.photoUrl = photoUrl;
-        this.offer = offer;
     }
 
     public User(){
@@ -44,14 +35,6 @@ public class User {
         this.name = name;
     }
 
-    public String getAuthId() {
-        return authId;
-    }
-
-    public void setAuthId(String authId){
-        this.authId = authId;
-    }
-
     public String getPhotoUrl() {
         return photoUrl;
     }
@@ -60,22 +43,21 @@ public class User {
         this.photoUrl = photoUrl;
     }
 
-    public Set<Offer> getOffer() {
-        return offer;
+    public List<Offer> getOffers() {
+        return offers;
     }
 
-    public void setOffer(Set<Offer> offer) {
-        this.offer = offer;
+    public void setOffers(List<Offer> offers) {
+        this.offers = offers;
     }
+
 
     @Override
     public String toString() {
         return "User{" +
                 "id='" + id + '\'' +
-                ", authId='" + authId + '\'' +
                 ", name='" + name + '\'' +
                 ", photoUrl='" + photoUrl + '\'' +
-                ", offer=" + offer +
                 '}';
     }
 

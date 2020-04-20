@@ -32,7 +32,7 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'com.google.firebase:firebase-auth:16.0.5'
     implementation 'com.firebaseui:firebase-ui-auth:6.2.0'
-    implementation 'com.google.firebase:firebase-database:16.0.4' //Quizas falla if then -> 17.0.0
+    implementation 'com.google.firebase:firebase-database:17.0.0' //Quizas falla if then -> 17.0.0
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'

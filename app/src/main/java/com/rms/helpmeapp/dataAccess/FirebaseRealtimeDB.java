@@ -1,5 +1,7 @@
 package com.rms.helpmeapp.dataAccess;
 
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
@@ -8,6 +10,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.rms.helpmeapp.model.Offer;
 import com.rms.helpmeapp.model.User;
 
@@ -17,8 +20,8 @@ import java.util.List;
 public class FirebaseRealtimeDB {
 
     private static final String PATH_USERS = "users";
-    private static final String CHILD_ID = "id";
     private static final String CHILD_OFFER = "offer";
+    private static final String CHILD_ID = "id";
     private static final String CHILD_LOCATION ="location";
 
     private List<User> usersFilter;
@@ -30,11 +33,31 @@ public class FirebaseRealtimeDB {
      */
     public void addUser(User user){
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference(PATH_USERS);
-        DatabaseReference keyRef = reference.push();
-        String key = keyRef.getKey();
-        User userWithId = user;
-        userWithId.setId(key);
-        keyRef.setValue(userWithId);
+        reference.setValue(user.getId());
+        reference.child(user.getId()).setValue(user);
+    }
+
+
+    public User findUserById(String id) {
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference(PATH_USERS);
+
+        reference.child(id).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                User user = dataSnapshot.getValue(User.class);
+                if (user != null) {
+                    Log.d("@@##--", "User finded " + user.toString());
+                } else {
+                    Log.d("@@##--", "User not found");
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.d("@@##--", "Fail?");
+            }
+        });
+        return null;
     }
 
     /**
@@ -48,9 +71,9 @@ public class FirebaseRealtimeDB {
     /**
      * Añadmios oferta
      */
-    public void addOffer(String userId, Offer offer){
+    public void addOffer(String id, Offer offer) {
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference(PATH_USERS);
-        reference.child(userId).child(CHILD_OFFER).setValue(offer);
+        reference.child(id).child(CHILD_OFFER).setValue(offer);
     }
 
 

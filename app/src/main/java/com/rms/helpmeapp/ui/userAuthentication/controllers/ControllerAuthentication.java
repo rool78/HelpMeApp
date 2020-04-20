@@ -12,6 +12,7 @@ import com.firebase.ui.auth.AuthUI;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.rms.helpmeapp.R;
+import com.rms.helpmeapp.dataAccess.FirebaseRealtimeDB;
 import com.rms.helpmeapp.ui.userAuthentication.AuthenticationView;
 import com.rms.helpmeapp.util.UserSingleton;
 
@@ -23,6 +24,7 @@ public class ControllerAuthentication {
     private static final int RC_SIGN_IN = 123;
     private FirebaseAuth mFirebaseAuth;
     private FirebaseAuth.AuthStateListener mAuthStateListener;
+    private FirebaseRealtimeDB db;
     private AuthenticationView authenticationView;
     private View view;
     private Fragment fragment;
@@ -31,6 +33,7 @@ public class ControllerAuthentication {
         this.view = view;
         this.fragment = fragment;
         this.authenticationView = authenticationView;
+        this.db = new FirebaseRealtimeDB();
     }
 
     public void onViewCreated(){
@@ -62,8 +65,14 @@ public class ControllerAuthentication {
 
         UserSingleton userSingleton = UserSingleton.getInstance();
 
-        userSingleton.user.setAuthId(firebaseUser.getUid());
+        userSingleton.user.setId(firebaseUser.getUid());
         userSingleton.user.setName(firebaseUser.getDisplayName());
+        userSingleton.user.setPhotoUrl("testing_db");
+
+        db.addUser(userSingleton.user);
+        db.findUserById(userSingleton.user.getId());
+        db.findUserById("3333");
+
 
         Log.d("@@##--", "FirebaseUser, Name: " + firebaseUser.getDisplayName() + " AuthId: " + firebaseUser.getUid());
 

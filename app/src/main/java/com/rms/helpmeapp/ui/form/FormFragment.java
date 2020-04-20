@@ -49,7 +49,7 @@ public class FormFragment extends Fragment implements FormView {
 
         UserSingleton s = UserSingleton.getInstance();
 
-        Log.d("@@##--", s.user.toString());
+        //Log.d("@@##--", s.user.toString());
 
         controller = new FormController(view);
 
@@ -70,9 +70,9 @@ public class FormFragment extends Fragment implements FormView {
                 String country = tilCountry.getEditText().getText().toString();
                 String province = tilProvince.getEditText().getText().toString();
                 String city = tilCity.getEditText().getText().toString();
-                String adress = tilAddress.getEditText().getText().toString();
+                String address = tilAddress.getEditText().getText().toString();
 
-                Offer offer = new Offer(title, description, country, city, province, adress, 1);
+                Offer offer = new Offer(title, description, country, city, province, address, 1);
                 Log.d("@@##--","FormView: Save button pressed " + offer);
 
                 controller.submitOffer(offer);
