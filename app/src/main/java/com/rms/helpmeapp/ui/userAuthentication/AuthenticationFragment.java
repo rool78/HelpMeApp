@@ -25,21 +25,16 @@ import com.rms.helpmeapp.util.UserSingleton;
 import java.util.Arrays;
 import java.util.List;
 
-public class AuthenticationFragment extends Fragment {
+public class AuthenticationFragment extends Fragment implements AuthenticationView{
 
-    private static final int RC_SIGN_IN = 123;
-    private FirebaseAuth mFirebaseAuth;
-    private FirebaseAuth.AuthStateListener mAuthStateListener;
     private ControllerAuthentication controller;
 
     public AuthenticationFragment() {
-
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_login, container, false);
     }
 
@@ -48,55 +43,25 @@ public class AuthenticationFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         //Dependency Injection?
-        controller = new ControllerAuthentication(view);
-
-        mFirebaseAuth = FirebaseAuth.getInstance();
-        mAuthStateListener = new FirebaseAuth.AuthStateListener() {
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
-                if (firebaseUser != null) {
-                    controller.authenticationSucced(firebaseUser);
-                } else {
-                    List<AuthUI.IdpConfig> providers = Arrays.asList(
-                                new AuthUI.IdpConfig.EmailBuilder().build(),
-                                new AuthUI.IdpConfig.GoogleBuilder().build());
-
-
-                    startActivityForResult(AuthUI.getInstance()
-                                .createSignInIntentBuilder()
-                                .setTosAndPrivacyPolicyUrls("", "")
-                                .setAvailableProviders(providers)
-                                .build(), RC_SIGN_IN);
-                }
-            }
-        };
-
+        controller = new ControllerAuthentication(view, this, this);
+        controller.onViewCreated();
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        mFirebaseAuth.addAuthStateListener(mAuthStateListener);
+        controller.onResume();
     }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == RC_SIGN_IN) {
-            if (resultCode == -1) {
-                // Successfully signed in
-                //TODO habria que mirar te contruir el objeto userSingleton bien en este punto para ya tenerlo listo
-                Toast.makeText(getContext(), "Bienvenido", Toast.LENGTH_SHORT).show();
-                // ...
-            } else {
-                // Sign in failed. If response is null the user canceled the
-                // sign-in flow using the back button. Otherwise check
-                // response.getError().getErrorCode() and handle the error.
-                // ...
-                Toast.makeText(getContext(), "Algo fallo ", Toast.LENGTH_SHORT).show();
-            }
-        }
+        controller.onActicityResult(requestCode, resultCode);
+    }
+
+    @Override
+    public void showToast(String message) {
+        Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
     }
 }
 
