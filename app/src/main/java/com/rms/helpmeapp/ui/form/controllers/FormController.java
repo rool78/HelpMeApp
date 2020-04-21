@@ -21,10 +21,10 @@ public class FormController {
     }
 
     public void submitOffer(Offer offer){
-        //final NavController navController = Navigation.findNavController(view);
-        //navController.navigate(R.id.action_loginFragment_to_formFragment);
         UserSingleton user = UserSingleton.getInstance();
         db.addOffer(user.user.getId(), offer);
+
+        navigateToDetail();
     }
 
     public boolean validateOffer(Offer offer){
@@ -32,7 +32,8 @@ public class FormController {
     }
 
     public void navigateToDetail(){
-
+        final NavController navController = Navigation.findNavController(view);
+        navController.navigate(R.id.action_formFragment_to_detailFragment);
     }
 
 

@@ -1,12 +1,14 @@
 package com.rms.helpmeapp.model;
 
+import com.google.firebase.database.Exclude;
+
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 
 public class User {
 
     private String id;
+
     private String name;
     private String photoUrl;
     private List<Offer> offers = new ArrayList<>();
@@ -19,6 +21,7 @@ public class User {
     public User(){
     }
 
+    @Exclude
     public String getId() {
         return id;
     }

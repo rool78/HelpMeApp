@@ -15,17 +15,17 @@ import com.rms.helpmeapp.model.Offer;
 import com.rms.helpmeapp.model.User;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class FirebaseRealtimeDB {
 
     private static final String PATH_USERS = "users";
-    private static final String CHILD_OFFER = "offer";
+    private static final String CHILD_OFFER = "offers";
     private static final String CHILD_ID = "id";
     private static final String CHILD_LOCATION ="location";
 
     private List<User> usersFilter;
-    private DatabaseReference mReference;
 
     /**
      *  Añadimos usuario en el caso en que no tenga debido al primer login, se crea en
@@ -46,7 +46,7 @@ public class FirebaseRealtimeDB {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 User user = dataSnapshot.getValue(User.class);
                 if (user != null) {
-                    Log.d("@@##--", "User finded " + user.toString());
+                    Log.d("@@##--", "User find " + user.toString());
                 } else {
                     Log.d("@@##--", "User not found");
                 }
@@ -73,7 +73,7 @@ public class FirebaseRealtimeDB {
      */
     public void addOffer(String id, Offer offer) {
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference(PATH_USERS);
-        reference.child(id).child(CHILD_OFFER).setValue(offer);
+        reference.child(id).child(CHILD_OFFER).push().setValue(offer);
     }
 
 

@@ -68,11 +68,8 @@ public class ControllerAuthentication {
         userSingleton.user.setId(firebaseUser.getUid());
         userSingleton.user.setName(firebaseUser.getDisplayName());
         userSingleton.user.setPhotoUrl("testing_db");
-
+        //TODO Comprobar si el usuario ya esta en base de datos, si no esta, agregarlo. Hay que replantear todo esto
         db.addUser(userSingleton.user);
-        db.findUserById(userSingleton.user.getId());
-        db.findUserById("3333");
-
 
         Log.d("@@##--", "FirebaseUser, Name: " + firebaseUser.getDisplayName() + " AuthId: " + firebaseUser.getUid());
 

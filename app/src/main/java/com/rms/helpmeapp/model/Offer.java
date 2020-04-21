@@ -2,6 +2,7 @@ package com.rms.helpmeapp.model;
 
 public class Offer {
 
+    private String id;
     private String title;
     private String description;
     private String country;
@@ -12,7 +13,6 @@ public class Offer {
     private int offerType;
 
     public Offer(){
-
     }
 
     public Offer(String title, String description, String country, String city, String province, String address, int offerType) {
@@ -23,6 +23,14 @@ public class Offer {
         this.province = province;
         this.adress = address;
         this.offerType = offerType;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getTitle() {
