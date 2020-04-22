@@ -5,6 +5,8 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.google.android.gms.tasks.Task;
+import com.google.android.gms.tasks.TaskCompletionSource;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -15,17 +17,16 @@ import com.rms.helpmeapp.model.Offer;
 import com.rms.helpmeapp.model.User;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class FirebaseRealtimeDB {
 
     private static final String PATH_USERS = "users";
-    private static final String CHILD_OFFER = "offers";
+    private static final String PATH_OFFERS = "offers";
     private static final String CHILD_ID = "id";
     private static final String CHILD_LOCATION ="location";
 
-    private List<User> usersFilter;
+    private List<Offer> offers = new ArrayList<>();
 
     /**
      *  Añadimos usuario en el caso en que no tenga debido al primer login, se crea en
@@ -72,8 +73,8 @@ public class FirebaseRealtimeDB {
      * Añadmios oferta
      */
     public void addOffer(String id, Offer offer) {
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference(PATH_USERS);
-        reference.child(id).child(CHILD_OFFER).push().setValue(offer);
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference(PATH_OFFERS);
+        reference.push().setValue(offer);
     }
 
 
@@ -82,7 +83,25 @@ public class FirebaseRealtimeDB {
      */
     public void removeOffer(String userId){
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference(PATH_USERS);
-        reference.child(userId).child(CHILD_OFFER).removeValue();
+        reference.child(userId).child(PATH_OFFERS).removeValue();
+    }
+
+    public Task<DataSnapshot> findAllOffers() {
+        final TaskCompletionSource<DataSnapshot> source = new TaskCompletionSource<>();
+
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference(PATH_OFFERS);
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                source.setResult(dataSnapshot);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.d("@@##--", "Fail?");
+            }
+        });
+        return source.getTask();
     }
 
     /**
@@ -90,13 +109,13 @@ public class FirebaseRealtimeDB {
      * recycle view, dando la opcion de cargar en tiempo real las tarjetas
      */
     public List<User> filterUsersByLocation(String location){
-        usersFilter = new ArrayList<>();
+        //usersFilter = new ArrayList<>();
 
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference(PATH_USERS);
         reference.orderByChild(CHILD_LOCATION).equalTo(location).addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                usersFilter.add(dataSnapshot.getValue(User.class));
+                //usersFilter.add(dataSnapshot.getValue(User.class));
             }
 
             @Override

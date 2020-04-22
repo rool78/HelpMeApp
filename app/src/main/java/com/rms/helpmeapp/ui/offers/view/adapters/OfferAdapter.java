@@ -8,17 +8,21 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-
 import com.rms.helpmeapp.R;
+import com.rms.helpmeapp.model.Offer;
 
 import java.util.List;
 
 public class OfferAdapter extends RecyclerView.Adapter<OfferAdapter.ViewHolder>{
 
-    private List<String> titlesTest;
+    private List<Offer> offers;
 
-    public OfferAdapter(List<String> products){
-        this.titlesTest = products;
+    public OfferAdapter(List<Offer> offers) {
+        this.offers = offers;
+    }
+
+    public void setOffers(List<Offer> offers) {
+        this.offers = offers;
     }
 
     @NonNull
@@ -31,12 +35,14 @@ public class OfferAdapter extends RecyclerView.Adapter<OfferAdapter.ViewHolder>{
 
     @Override
     public void onBindViewHolder(@NonNull OfferAdapter.ViewHolder holder, int position) {
-        holder.tvData.setText(titlesTest.get(position));
+        holder.tvTitle.setText(offers.get(position).getTitle());
+        holder.tvDescription.setText(offers.get(position).getDescription());
+        holder.tvLocation.setText(offers.get(position).getCity());
     }
 
     @Override
     public int getItemCount() {
-        return titlesTest.size();
+        return offers.size();
     }
 
     /**
@@ -44,13 +50,16 @@ public class OfferAdapter extends RecyclerView.Adapter<OfferAdapter.ViewHolder>{
      */
     public static class ViewHolder extends  RecyclerView.ViewHolder{
         public View view;
-        public TextView tvData;
+        public TextView tvTitle;
+        public TextView tvDescription;
+        public TextView tvLocation;
 
         public ViewHolder(View view){
             super(view);
             this.view = view;
-            this.tvData = view.findViewById(R.id.tvTitle);
-
+            this.tvTitle = view.findViewById(R.id.tvTitle);
+            this.tvDescription = view.findViewById(R.id.tvDescription);
+            this.tvLocation = view.findViewById(R.id.tvLocation);
         }
     }
 }

@@ -2,16 +2,15 @@ package com.rms.helpmeapp.ui.form;
 
 
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
 import com.google.android.material.textfield.TextInputLayout;
 import com.rms.helpmeapp.R;
@@ -72,7 +71,9 @@ public class FormFragment extends Fragment implements FormView {
                 String city = tilCity.getEditText().getText().toString();
                 String address = tilAddress.getEditText().getText().toString();
 
-                Offer offer = new Offer(title, description, country, city, province, address, 1);
+                UserSingleton user = UserSingleton.getInstance();
+
+                Offer offer = new Offer(user.user.getId(), title, description, country, city, province, address, 1);
                 Log.d("@@##--","FormView: Save button pressed " + offer);
 
                 controller.submitOffer(offer);

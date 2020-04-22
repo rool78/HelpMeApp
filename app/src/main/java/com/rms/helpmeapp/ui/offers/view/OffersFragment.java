@@ -2,6 +2,9 @@ package com.rms.helpmeapp.ui.offers.view;
 
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -10,23 +13,21 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
 import com.rms.helpmeapp.R;
+import com.rms.helpmeapp.model.Offer;
+import com.rms.helpmeapp.ui.offers.controllers.OffersController;
 import com.rms.helpmeapp.ui.offers.view.adapters.OfferAdapter;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class OffersFragment extends Fragment {
 
-    private OfferAdapter offerAdapter;
-    private RecyclerView mRecyclerView;
+    private RecyclerView recyclerView;
+    private OfferAdapter adapter;
+    private OffersController controller;
 
     public OffersFragment() {
         // Required empty public constructor
@@ -43,19 +44,16 @@ public class OffersFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        this.mRecyclerView = view.findViewById(R.id.recyclerView);
-
-        List<String> prueba = new ArrayList<>();
-        prueba.add("aaa");
-        prueba.add("bbb");
-
-        offerAdapter = new OfferAdapter(prueba);
+        this.adapter = new OfferAdapter(new ArrayList<Offer>());
+        this.recyclerView = view.findViewById(R.id.recyclerView);
+        this.controller = new OffersController(adapter);
 
         LinearLayoutManager linearLayoutManager = new GridLayoutManager(view.getContext(),
                     getResources().getInteger(R.integer.main_columns));
-        mRecyclerView.setLayoutManager(linearLayoutManager);
-        mRecyclerView.setAdapter(offerAdapter);
+        recyclerView.setLayoutManager(linearLayoutManager);
+        recyclerView.setAdapter(adapter);
+
+        controller.onCreatedView();
 
     }
 }
