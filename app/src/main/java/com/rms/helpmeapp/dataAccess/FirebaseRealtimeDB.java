@@ -90,7 +90,7 @@ public class FirebaseRealtimeDB {
         final TaskCompletionSource<DataSnapshot> source = new TaskCompletionSource<>();
 
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference(PATH_OFFERS);
-        reference.addValueEventListener(new ValueEventListener() {
+        reference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 source.setResult(dataSnapshot);

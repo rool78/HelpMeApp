@@ -15,6 +15,7 @@ import java.util.List;
 
 public class OfferAdapter extends RecyclerView.Adapter<OfferAdapter.ViewHolder>{
 
+    private OnOfferClickListener listener;
     private List<Offer> offers;
 
     public OfferAdapter(List<Offer> offers) {
@@ -23,6 +24,10 @@ public class OfferAdapter extends RecyclerView.Adapter<OfferAdapter.ViewHolder>{
 
     public void setOffers(List<Offer> offers) {
         this.offers = offers;
+    }
+
+    public void setListener(OnOfferClickListener listener) {
+        this.listener = listener;
     }
 
     @NonNull
@@ -35,6 +40,7 @@ public class OfferAdapter extends RecyclerView.Adapter<OfferAdapter.ViewHolder>{
 
     @Override
     public void onBindViewHolder(@NonNull OfferAdapter.ViewHolder holder, int position) {
+        holder.setOnClickListener(offers.get(position), listener);
         holder.tvTitle.setText(offers.get(position).getTitle());
         holder.tvDescription.setText(offers.get(position).getDescription());
         holder.tvLocation.setText(offers.get(position).getCity());
@@ -60,6 +66,15 @@ public class OfferAdapter extends RecyclerView.Adapter<OfferAdapter.ViewHolder>{
             this.tvTitle = view.findViewById(R.id.tvTitle);
             this.tvDescription = view.findViewById(R.id.tvDescription);
             this.tvLocation = view.findViewById(R.id.tvLocation);
+        }
+
+        void setOnClickListener(final Offer offer, final OnOfferClickListener listener) {
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    listener.onOfferClick(offer);
+                }
+            });
         }
     }
 }

@@ -46,7 +46,7 @@ public class OffersFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         this.adapter = new OfferAdapter(new ArrayList<Offer>());
         this.recyclerView = view.findViewById(R.id.recyclerView);
-        this.controller = new OffersController(adapter);
+        this.controller = new OffersController(adapter, view);
 
         LinearLayoutManager linearLayoutManager = new GridLayoutManager(view.getContext(),
                     getResources().getInteger(R.integer.main_columns));

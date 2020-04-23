@@ -2,6 +2,14 @@ package com.rms.helpmeapp.model;
 
 public class Offer {
 
+    public static final String USER_ID = "userId";
+    public static final String TITLE = "title";
+    public static final String DESCRIPTION = "description";
+    public static final String COUNTRY = "country";
+    public static final String CITY = "city";
+    public static final String PROVINCE = "province";
+    public static final String ADDRESS = "address";
+
     private String id;
     private String userId;
     private String title;
@@ -9,7 +17,7 @@ public class Offer {
     private String country;
     private String city;
     private String province;
-    private String adress;
+    private String address;
 
     private int offerType;
 
@@ -23,7 +31,7 @@ public class Offer {
         this.country = country;
         this.city = city;
         this.province = province;
-        this.adress = address;
+        this.address = address;
         this.offerType = offerType;
     }
 
@@ -83,12 +91,12 @@ public class Offer {
         this.province = province;
     }
 
-    public String getAdress() {
-        return adress;
+    public String getAddress() {
+        return address;
     }
 
-    public void setAdress(String adress) {
-        this.adress = adress;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public int getOfferType() {
@@ -107,7 +115,7 @@ public class Offer {
                 ", country='" + country + '\'' +
                 ", city='" + city + '\'' +
                 ", province='" + province + '\'' +
-                ", adress='" + adress + '\'' +
+                ", address='" + address + '\'' +
                 ", offerType=" + offerType +
                 '}';
     }

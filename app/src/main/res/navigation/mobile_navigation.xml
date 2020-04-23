@@ -33,7 +33,11 @@
         android:id="@+id/offersFragment"
         android:name="com.rms.helpmeapp.ui.offers.view.OffersFragment"
         android:label="Help offers"
-        tools:layout="@layout/fragment_offers" />
+        tools:layout="@layout/fragment_offers">
+        <action
+            android:id="@+id/action_offersFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/loginFragment"
