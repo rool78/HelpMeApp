@@ -12,12 +12,15 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ServerValue;
 import com.google.firebase.database.ValueEventListener;
 import com.rms.helpmeapp.model.Offer;
 import com.rms.helpmeapp.model.User;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class FirebaseRealtimeDB {
 
@@ -74,7 +77,12 @@ public class FirebaseRealtimeDB {
      */
     public void addOffer(String id, Offer offer) {
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference(PATH_OFFERS);
-        reference.push().setValue(offer);
+        Map map = new HashMap();
+        map.put("time", ServerValue.TIMESTAMP);
+        String key = reference.push().getKey();
+        reference.child(key).setValue(offer);
+        reference.child(key).updateChildren(map);
+
     }
 
 

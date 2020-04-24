@@ -1,5 +1,7 @@
 package com.rms.helpmeapp.model;
 
+import java.sql.Timestamp;
+
 public class Offer {
 
     public static final String USER_ID = "userId";
@@ -9,6 +11,7 @@ public class Offer {
     public static final String CITY = "city";
     public static final String PROVINCE = "province";
     public static final String ADDRESS = "address";
+    public static final String DATE = "date";
 
     private String id;
     private String userId;
@@ -18,6 +21,7 @@ public class Offer {
     private String city;
     private String province;
     private String address;
+    private Timestamp date;
 
     private int offerType;
 
@@ -105,6 +109,14 @@ public class Offer {
 
     public void setOfferType(int offerType) {
         this.offerType = offerType;
+    }
+
+    public Timestamp getDate() {
+        return date;
+    }
+
+    public void setDate(Timestamp date) {
+        this.date = date;
     }
 
     @Override

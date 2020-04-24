@@ -48,6 +48,10 @@ public class OffersController implements OnOfferClickListener {
                         Offer offer = child.getValue(Offer.class);
                         if (offer != null) {
                             Log.d("@@##--", "Offer find " + offer.toString());
+                            //Log.d("@@##--", "Fecha " + offer.getDate().toString());
+                            //Timestamp timestamp = child.getValue(Timestamp.class);
+                            //String s = new SimpleDateFormat("MM/dd/yyyy").format(timestamp);
+                            //Log.d("@@##--", "Fecha " + s);
                             offers.add(offer);
                         }
                     }
