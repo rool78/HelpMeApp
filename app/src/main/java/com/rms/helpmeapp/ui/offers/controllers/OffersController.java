@@ -18,6 +18,7 @@ import com.rms.helpmeapp.ui.offers.view.adapters.OfferAdapter;
 import com.rms.helpmeapp.ui.offers.view.adapters.OnOfferClickListener;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class OffersController implements OnOfferClickListener {
@@ -48,10 +49,7 @@ public class OffersController implements OnOfferClickListener {
                         Offer offer = child.getValue(Offer.class);
                         if (offer != null) {
                             Log.d("@@##--", "Offer find " + offer.toString());
-                            //Log.d("@@##--", "Fecha " + offer.getDate().toString());
-                            //Timestamp timestamp = child.getValue(Timestamp.class);
-                            //String s = new SimpleDateFormat("MM/dd/yyyy").format(timestamp);
-                            //Log.d("@@##--", "Fecha " + s);
+                            Log.d("@@##--", new Date(offer.getTime()).toString());
                             offers.add(offer);
                         }
                     }

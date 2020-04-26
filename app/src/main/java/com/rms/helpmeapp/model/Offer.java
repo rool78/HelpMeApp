@@ -1,6 +1,5 @@
 package com.rms.helpmeapp.model;
 
-import java.sql.Timestamp;
 
 public class Offer {
 
@@ -11,7 +10,7 @@ public class Offer {
     public static final String CITY = "city";
     public static final String PROVINCE = "province";
     public static final String ADDRESS = "address";
-    public static final String DATE = "date";
+    public static final String DATE = "time";
 
     private String id;
     private String userId;
@@ -21,14 +20,14 @@ public class Offer {
     private String city;
     private String province;
     private String address;
-    private Timestamp date;
+    private Long time;
 
     private int offerType;
 
     public Offer(){
     }
 
-    public Offer(String userId, String title, String description, String country, String city, String province, String address, int offerType) {
+    public Offer(String userId, String title, String description, String country, String city, String province, String address, int offerType, Long time) {
         this.userId = userId;
         this.title = title;
         this.description = description;
@@ -37,6 +36,7 @@ public class Offer {
         this.province = province;
         this.address = address;
         this.offerType = offerType;
+        this.time = time;
     }
 
     public String getId() {
@@ -111,23 +111,26 @@ public class Offer {
         this.offerType = offerType;
     }
 
-    public Timestamp getDate() {
-        return date;
+    public Long getTime() {
+        return time;
     }
 
-    public void setDate(Timestamp date) {
-        this.date = date;
+    public void setTime(Long time) {
+        this.time = time;
     }
 
     @Override
     public String toString() {
         return "Offer{" +
-                "title='" + title + '\'' +
+                "id='" + id + '\'' +
+                ", userId='" + userId + '\'' +
+                ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
                 ", country='" + country + '\'' +
                 ", city='" + city + '\'' +
                 ", province='" + province + '\'' +
                 ", address='" + address + '\'' +
+                ", time=" + time +
                 ", offerType=" + offerType +
                 '}';
     }

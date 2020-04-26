@@ -73,7 +73,7 @@ public class FormFragment extends Fragment implements FormView {
 
                 UserSingleton user = UserSingleton.getInstance();
 
-                Offer offer = new Offer(user.user.getId(), title, description, country, city, province, address, 1);
+                Offer offer = new Offer(user.user.getId(), title, description, country, city, province, address, 1, null);
                 Log.d("@@##--","FormView: Save button pressed " + offer);
 
                 controller.submitOffer(offer);
