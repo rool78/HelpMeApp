@@ -22,16 +22,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="@dimen/text_size_large"
-        android:textColor="#06a7f7"
-        android:text="Need Some Medicines"/>
+        android:textColor="#06a7f7" />
 
     <TextView
         android:id="@+id/tvDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/margin_padding_size_medium"
-        android:textSize="@dimen/text_size_medium"
-        android:text="Hello, I need some medicines as listed here, please ping. Paracetamol 500, Ibuprofen 250, Amoxiciline 250."/>
+        android:textSize="@dimen/text_size_medium" />
+
+        <TextView
+            android:id="@+id/tvTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/margin_padding_size_large"
+            android:textSize="@dimen/text_size_medium" />
+
     </LinearLayout>
 
 </FrameLayout>

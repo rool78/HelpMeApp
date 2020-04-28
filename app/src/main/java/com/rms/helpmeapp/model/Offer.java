@@ -10,7 +10,7 @@ public class Offer {
     public static final String CITY = "city";
     public static final String PROVINCE = "province";
     public static final String ADDRESS = "address";
-    public static final String DATE = "time";
+    public static final String TIME = "time";
 
     private String id;
     private String userId;

@@ -13,17 +13,23 @@ import androidx.fragment.app.Fragment;
 
 import com.rms.helpmeapp.R;
 import com.rms.helpmeapp.model.Offer;
+import com.rms.helpmeapp.ui.detail.controllers.DetailController;
+
+import java.util.Date;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class DetailFragment extends Fragment {
+public class DetailFragment extends Fragment implements DetailView {
 
     private TextView tvTitle;
     private TextView tvDescription;
+    private TextView tvTime;
     private TextView tvName;
+    private TextView tvNumber;
+    private TextView tvLocation;
 
-    private Offer offer;
+    private DetailController controller;
 
     public DetailFragment() {
         // Required empty public constructor
@@ -41,20 +47,23 @@ public class DetailFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        controller = new DetailController(this);
+
         this.tvTitle = view.findViewById(R.id.tvTitle);
         this.tvDescription = view.findViewById(R.id.tvDescription);
+        this.tvTime = view.findViewById(R.id.tvTime);
         this.tvName = view.findViewById(R.id.tvUserName);
 
         if (getArguments() != null) {
-            configOffer(getArguments());
-            tvTitle.setText(offer.getTitle());
-            tvDescription.setText(offer.getDescription());
+            controller.configOffer(getArguments());
         }
     }
 
-    public void configOffer(Bundle args) {
-        offer = new Offer();
-        offer.setTitle(args.getString(Offer.TITLE));
-        offer.setDescription(args.getString(Offer.DESCRIPTION));
+    public void showDetails(Offer offer, String name) {
+        tvTitle.setText(offer.getTitle());
+        tvDescription.setText(offer.getDescription());
+        tvTime.setText(new Date(offer.getTime()).toString());
+        tvName.setText(name);
+
     }
 }

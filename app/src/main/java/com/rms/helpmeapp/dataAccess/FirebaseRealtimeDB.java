@@ -42,18 +42,14 @@ public class FirebaseRealtimeDB {
     }
 
 
-    public User findUserById(String id) {
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference(PATH_USERS);
+    public Task<DataSnapshot> findUserById(String id) {
+        final TaskCompletionSource<DataSnapshot> source = new TaskCompletionSource<>();
 
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference(PATH_USERS);
         reference.child(id).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                User user = dataSnapshot.getValue(User.class);
-                if (user != null) {
-                    Log.d("@@##--", "User find " + user.toString());
-                } else {
-                    Log.d("@@##--", "User not found");
-                }
+                source.setResult(dataSnapshot);
             }
 
             @Override
@@ -61,7 +57,7 @@ public class FirebaseRealtimeDB {
                 Log.d("@@##--", "Fail?");
             }
         });
-        return null;
+        return source.getTask();
     }
 
     /**

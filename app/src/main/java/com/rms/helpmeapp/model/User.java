@@ -13,12 +13,12 @@ public class User {
     private String photoUrl;
     private List<Offer> offers = new ArrayList<>();
 
+    public User() {
+    }
+
     public User(String name, String photoUrl) {
         this.name = name;
         this.photoUrl = photoUrl;
-    }
-
-    public User(){
     }
 
     @Exclude

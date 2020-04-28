@@ -18,11 +18,10 @@ import com.rms.helpmeapp.ui.offers.view.adapters.OfferAdapter;
 import com.rms.helpmeapp.ui.offers.view.adapters.OnOfferClickListener;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class OffersController implements OnOfferClickListener {
-
+    //TODO crear model para comunicarse con la db y el model con el controller???
     private FirebaseRealtimeDB db;
     private OfferAdapter adapter;
     private View view;
@@ -49,7 +48,6 @@ public class OffersController implements OnOfferClickListener {
                         Offer offer = child.getValue(Offer.class);
                         if (offer != null) {
                             Log.d("@@##--", "Offer find " + offer.toString());
-                            Log.d("@@##--", new Date(offer.getTime()).toString());
                             offers.add(offer);
                         }
                     }
@@ -70,6 +68,8 @@ public class OffersController implements OnOfferClickListener {
         arguments.putString(Offer.CITY, offer.getCity());
         arguments.putString(Offer.PROVINCE, offer.getProvince());
         arguments.putString(Offer.ADDRESS, offer.getAddress());
+        arguments.putString(Offer.USER_ID, offer.getUserId());
+
         navController.navigate(R.id.action_offersFragment_to_detailFragment, arguments);
     }
 }
