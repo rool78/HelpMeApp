@@ -30,6 +30,10 @@ public class DetailController {
         offer.setDescription(args.getString(Offer.DESCRIPTION));
         offer.setTime(args.getLong(offer.TIME));
         offer.setUserId(args.getString(Offer.USER_ID));
+        offer.setCountry(args.getString(Offer.COUNTRY));
+        offer.setCity(args.getString(Offer.CITY));
+        offer.setProvince(args.getString(Offer.PROVINCE));
+        offer.setAddress(args.getString(Offer.ADDRESS));
 
         Task<DataSnapshot> task = db.findUserById(offer.getUserId());
         task.addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
@@ -38,10 +42,12 @@ public class DetailController {
                 if (task.isSuccessful()) {
                     for (DataSnapshot child : task.getResult().getChildren()) {
                         //FIXME por que no aparece el campo photoUrl
-                        String name = child.getValue(String.class);
-                        if (name != null) {
-                            Log.d("@@##--", "Offer find " + name);
-                            detailView.showDetails(offer, name);
+                        if (child.getKey().equals("name")) {
+                            String name = child.getValue(String.class);
+                            if (name != null) {
+                                Log.d("@@##--", "Offer find " + name);
+                                detailView.showDetails(offer, name);
+                            }
                         }
                     }
                 }

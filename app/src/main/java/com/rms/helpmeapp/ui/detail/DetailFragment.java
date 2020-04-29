@@ -53,6 +53,7 @@ public class DetailFragment extends Fragment implements DetailView {
         this.tvDescription = view.findViewById(R.id.tvDescription);
         this.tvTime = view.findViewById(R.id.tvTime);
         this.tvName = view.findViewById(R.id.tvUserName);
+        this.tvLocation = view.findViewById(R.id.tvLocation);
 
         if (getArguments() != null) {
             controller.configOffer(getArguments());
@@ -64,6 +65,7 @@ public class DetailFragment extends Fragment implements DetailView {
         tvDescription.setText(offer.getDescription());
         tvTime.setText(new Date(offer.getTime()).toString());
         tvName.setText(name);
+        tvLocation.setText(offer.getCity() + ", " + offer.getProvince());
 
     }
 }
