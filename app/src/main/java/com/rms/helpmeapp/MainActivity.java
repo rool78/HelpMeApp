@@ -2,23 +2,16 @@ package com.rms.helpmeapp;
 
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.navigation.NavigationView;
-import com.rms.helpmeapp.ui.offers.view.OffersFragment;
-
-import androidx.drawerlayout.widget.DrawerLayout;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
-import android.view.Menu;
-import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -35,8 +28,8 @@ public class MainActivity extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                    R.id.nav_home, R.id.nav_help_offers, R.id.offersFragment,
-                    R.id.nav_contact_us, R.id.nav_privacy_policy)
+                R.id.nav_home, R.id.offersFragment, R.id.nav_help_offers,
+                R.id.profileFragment, R.id.nav_contact_us, R.id.nav_privacy_policy)
                     .setDrawerLayout(drawer)
                     .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);

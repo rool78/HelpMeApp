@@ -63,4 +63,9 @@
         android:name="com.rms.helpmeapp.ui.detail.DetailFragment"
         android:label="Detail"
         tools:layout="@layout/fragment_detail" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.rms.helpmeapp.ui.profile.ProfileFragment"
+        android:label="Profile"
+        tools:layout="@layout/fragment_profile" />
 </navigation>

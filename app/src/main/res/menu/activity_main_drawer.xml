@@ -5,11 +5,14 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_help_offers"
+            android:id="@+id/offersFragment"
             android:title="Help offers" />
         <item
-            android:id="@+id/offersFragment"
+            android:id="@+id/nav_help_offers"
             android:title="Requests" />
+        <item
+            android:id="@+id/profileFragment"
+            android:title="Profile" />
     </group>
 
     <item android:title="">
