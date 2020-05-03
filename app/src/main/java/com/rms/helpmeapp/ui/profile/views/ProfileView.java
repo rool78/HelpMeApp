@@ -1,4 +1,4 @@
-package com.rms.helpmeapp.ui.profile;
+package com.rms.helpmeapp.ui.profile.views;
 
 import com.rms.helpmeapp.model.User;
 

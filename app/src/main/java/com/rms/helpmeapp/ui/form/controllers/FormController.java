@@ -33,6 +33,7 @@ public class FormController {
 
     public void navigateToDetail(){
         final NavController navController = Navigation.findNavController(view);
+        //TODO enviar detalles agregados
         navController.navigate(R.id.action_formFragment_to_detailFragment);
     }
 

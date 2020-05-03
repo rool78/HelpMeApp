@@ -1,15 +1,18 @@
-package com.rms.helpmeapp.ui.profile;
+package com.rms.helpmeapp.ui.profile.views;
 
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import com.rms.helpmeapp.R;
 import com.rms.helpmeapp.model.User;
@@ -22,6 +25,7 @@ public class ProfileFragment extends Fragment implements ProfileView {
 
     private ProfileController controller;
     private TextView tvName;
+    private Button btOffers;
 
     public ProfileFragment() {
         this.controller = new ProfileController(this);
@@ -35,10 +39,21 @@ public class ProfileFragment extends Fragment implements ProfileView {
     }
 
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull final View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        tvName = view.findViewById(R.id.tvUserName);
-        controller.onViewCreated();
+
+        final NavController navController = Navigation.findNavController(view);
+
+        this.tvName = view.findViewById(R.id.tvUserName);
+        this.btOffers = view.findViewById(R.id.btHelpOffers);
+        this.controller.onViewCreated();
+
+        btOffers.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navController.navigate(R.id.action_profileFragment_to_profileOffersFragment);
+            }
+        });
 
     }
 

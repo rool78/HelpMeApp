@@ -12,8 +12,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.rms.helpmeapp.R;
-import com.rms.helpmeapp.dataAccess.FirebaseRealtimeDB;
 import com.rms.helpmeapp.model.Offer;
+import com.rms.helpmeapp.ui.offers.model.OffersDbHelper;
 import com.rms.helpmeapp.ui.offers.view.adapters.OfferAdapter;
 import com.rms.helpmeapp.ui.offers.view.adapters.OnOfferClickListener;
 
@@ -21,8 +21,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class OffersController implements OnOfferClickListener {
-    //TODO crear model para comunicarse con la db y el model con el controller???
-    private FirebaseRealtimeDB db;
+
+    private OffersDbHelper db;
     private OfferAdapter adapter;
     private View view;
     private List<Offer> offers = new ArrayList<>();
@@ -30,10 +30,10 @@ public class OffersController implements OnOfferClickListener {
     public OffersController(OfferAdapter adapter, View view) {
         this.adapter = adapter;
         this.view = view;
-        this.db = new FirebaseRealtimeDB();
+        this.db = new OffersDbHelper();
     }
 
-    public void onCreatedView() {
+    public void onViewCreated() {
         adapter.setListener(this);
         showOffers();
     }

@@ -65,7 +65,16 @@
         tools:layout="@layout/fragment_detail" />
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.rms.helpmeapp.ui.profile.ProfileFragment"
+        android:name="com.rms.helpmeapp.ui.profile.views.ProfileFragment"
         android:label="Profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile">
+        <action
+            android:id="@+id/action_profileFragment_to_profileOffersFragment"
+            app:destination="@id/profileOffersFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileOffersFragment"
+        android:name="com.rms.helpmeapp.ui.profile.views.ProfileOffersFragment"
+        android:label="My offers"
+        tools:layout="@layout/fragment_profile_offers" />
 </navigation>

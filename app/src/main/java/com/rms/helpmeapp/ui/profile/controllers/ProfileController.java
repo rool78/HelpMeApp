@@ -1,6 +1,6 @@
 package com.rms.helpmeapp.ui.profile.controllers;
 
-import com.rms.helpmeapp.ui.profile.ProfileView;
+import com.rms.helpmeapp.ui.profile.views.ProfileView;
 import com.rms.helpmeapp.util.UserSingleton;
 
 public class ProfileController {
