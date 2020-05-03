@@ -8,24 +8,30 @@ import androidx.annotation.NonNull;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
-import com.rms.helpmeapp.dataAccess.FirebaseRealtimeDB;
 import com.rms.helpmeapp.model.Offer;
 import com.rms.helpmeapp.ui.detail.DetailView;
+import com.rms.helpmeapp.ui.detail.model.DetailDbHelper;
 
 public class DetailController {
 
     private DetailView detailView;
     private Offer offer;
-    private FirebaseRealtimeDB db;
+    private DetailDbHelper db;
 
     public DetailController(DetailView detailView) {
         offer = new Offer();
-        this.db = new FirebaseRealtimeDB();
+        this.db = new DetailDbHelper();
         this.detailView = detailView;
     }
 
     public void configOffer(Bundle args) {
 
+        Boolean visivility = args.getBoolean("profile");
+
+        if (visivility) {
+            detailView.showEditButtons();
+        }
+        offer.setId(args.getString(offer.ID));
         offer.setTitle(args.getString(Offer.TITLE));
         offer.setDescription(args.getString(Offer.DESCRIPTION));
         offer.setTime(args.getLong(offer.TIME));
@@ -53,5 +59,11 @@ public class DetailController {
                 }
             }
         });
+    }
+
+    public void deleteOffer() {
+        Log.d("@@##--", "Id offer to delete: " + offer.getId());
+        db.deleteOfferById(offer.getId());
+        //TODO Volver hacia la lista??
     }
 }

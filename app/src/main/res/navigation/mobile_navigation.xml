@@ -76,5 +76,9 @@
         android:id="@+id/profileOffersFragment"
         android:name="com.rms.helpmeapp.ui.profile.views.ProfileOffersFragment"
         android:label="My offers"
-        tools:layout="@layout/fragment_profile_offers" />
+        tools:layout="@layout/fragment_profile_offers">
+        <action
+            android:id="@+id/action_profileOffersFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
 </navigation>

@@ -15,7 +15,7 @@ import java.util.List;
 
 public class ProfileOffersAdapter extends RecyclerView.Adapter<ProfileOffersAdapter.ViewHolder> {
 
-    //TODO Add Listener
+    private OnOfferClickListener listener;
     private List<Offer> offers;
 
     public ProfileOffersAdapter(List<Offer> offers) {
@@ -24,6 +24,10 @@ public class ProfileOffersAdapter extends RecyclerView.Adapter<ProfileOffersAdap
 
     public void setOffers(List<Offer> offers) {
         this.offers = offers;
+    }
+
+    public void setListener(OnOfferClickListener listener) {
+        this.listener = listener;
     }
 
     @NonNull
@@ -36,7 +40,7 @@ public class ProfileOffersAdapter extends RecyclerView.Adapter<ProfileOffersAdap
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        //TODO Add Listener
+        holder.setOnClickListener(offers.get(position), listener);
         holder.tvTitle.setText(offers.get(position).getTitle());
         holder.tvDescription.setText(offers.get(position).getDescription());
         holder.tvLocation.setText(offers.get(position).getCity());
@@ -63,7 +67,15 @@ public class ProfileOffersAdapter extends RecyclerView.Adapter<ProfileOffersAdap
             this.tvDescription = view.findViewById(R.id.tvDescription);
             this.tvLocation = view.findViewById(R.id.tvLocation);
         }
-        //TODO Add Listener
+
+        void setOnClickListener(final Offer offer, final OnOfferClickListener listener) {
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    listener.onOfferClick(offer);
+                }
+            });
+        }
     }
 
 }

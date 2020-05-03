@@ -62,6 +62,7 @@ public class OffersController implements OnOfferClickListener {
     public void onOfferClick(Offer offer) {
         final NavController navController = Navigation.findNavController(view);
         Bundle arguments = new Bundle();
+        arguments.putString(Offer.ID, offer.getId());
         arguments.putString(Offer.TITLE, offer.getTitle());
         arguments.putString(Offer.DESCRIPTION, offer.getDescription());
         arguments.putString(Offer.COUNTRY, offer.getCountry());

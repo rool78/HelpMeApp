@@ -10,7 +10,7 @@
 
 <FrameLayout
     android:layout_width="match_parent"
-    android:layout_height="200dp">
+    android:layout_height="188dp">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -45,7 +45,7 @@
     <LinearLayout
         android:id="@+id/profileFrame"
         android:layout_width="match_parent"
-        android:layout_height="144dp"
+        android:layout_height="100dp"
         android:background="#e2ecf0"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -133,6 +133,26 @@
             android:src="@drawable/google_maps"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/imgPhone" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btEdit"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            app:layout_constraintBottom_toTopOf="@id/btDelete"
+            app:layout_constraintStart_toStartOf="parent"
+            android:text="Edit"
+            android:backgroundTint="@color/colorPrimaryDark"
+            android:visibility="gone" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btDelete"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:backgroundTint="@color/colorAccent"
+            android:text="Delete"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:visibility="gone" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

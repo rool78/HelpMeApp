@@ -74,13 +74,12 @@ public class FirebaseRealtimeDB {
     public void addOffer(String id, Offer offer) {
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference(PATH_OFFERS);
         Map map = new HashMap();
-        map.put("time", ServerValue.TIMESTAMP);
         String key = reference.push().getKey();
+        map.put("time", ServerValue.TIMESTAMP);
+        map.put("id", key);
         reference.child(key).setValue(offer);
         reference.child(key).updateChildren(map);
-
     }
-
 
     /**
      * Eliminamos oferta

@@ -30,7 +30,6 @@ public class ProfileOffersFragment extends Fragment {
         // Required empty public constructor
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -42,7 +41,7 @@ public class ProfileOffersFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         this.adapter = new ProfileOffersAdapter(new ArrayList<Offer>());
-        this.controller = new ProfileOffersController(adapter);
+        this.controller = new ProfileOffersController(adapter, view);
         this.recyclerView = view.findViewById(R.id.recyclerView);
 
         LinearLayoutManager linearLayoutManager = new GridLayoutManager(view.getContext(),
